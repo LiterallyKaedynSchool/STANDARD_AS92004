@@ -1,53 +1,51 @@
-'''Simple Quiz
+'''
+STANDARD AS92004 Quiz About New Zealand
 Kaedyn Eastall
 Licensed with the JSS General Public License 001 - https://github.com/Jester-Software-Systems/JSS_LICENSE_DIRECTORY/blob/2025-Licenses/MARCH/JSS-GPL1
 '''
-
-# Import
-import random
-import os
 import time
 
-# Variables
-INT_POINTS = 0
-INT_LOSE = 2.5
-INT_WIN = 5
-bool_play_again = True
-str_username = ""
-int_question = 1
-bool_playing = False
-str_playing = ""
+# Lists & Variables
+int_score = 0
+int_question = 0
+LIST_QUESTIONS = [
+    "Who found New Zealand?",
+    "What is the capital of New Zealand?",
+    "Where is the big carrot?",
+    "What does \"Kia Ora\" mean?",
+    "What is the name of the glowworm caves on the North Island?",
+    "What is the name of this 328m high landmark in Auckland?",
+    "Can you name the highest mountain in New Zealand?",
+    "(True or False) The South Island the largest island in the world?"
+]
+LIST_ANSWERS = [
+    "Abel Tasman",
+    "Wellington",
+    "Ohakune",
+    "Hello",
+    "Waitomo",
+    "Sky Tower",
+    "Mount Cook",
+    "False"
+]
+LIST_YAP = [
+    "Welcome to Kaedyn's quiz! Let's go."
+]
 
-# Main Greeting
-
-print("test")
-def clear():
-    os.system('cls' if os.name == 'nt' else 'clear')
-    
-def end():
-    time.sleep(1.5)
-    print("Goodbye!")
-    exit()
-
-def welcome(str_username):
-    print("Hello, {}! Are you ready to play (Input yes or no)?".format(str_username))
-    str_playing = input()
-    str_playing.lower()
-    if str_playing == "yes":
-        bool_playing = True
-        str_playing = "yes"
-        clear()
-    elif str_playing == "no":
-        bool_playing = False
-        print("Alright, thank you for testing.")
-        end()
+# Main Question Asking
+print(LIST_YAP[0])
+for i in range (len(LIST_QUESTIONS)):
+    time.sleep(1)
+    print("\n")
+    print(f"{LIST_QUESTIONS[i]}")
+    ans = input()
+    ans = ans.lower()
+    ans = ans.title()
+    if ans == LIST_ANSWERS[i]:
+        int_score += 5
+        print(f"That's right! You now have {int_score} points.")
+        i =+ 1
     else:
-        print("Please input \"yes\" or \"no\"!")
-        time.sleep(2)
-        clear()
-        welcome(str_username)
-
-clear()
-print("Hello, user! Welcome to the quiz, what is your name?")
-str_username = input()
-welcome(str_username)
+        int_score -= 2.5
+        print(f"That's wrong. The answer was {LIST_ANSWERS[i]}.\nYou now have {int_score} points.")
+        i =+ 1
