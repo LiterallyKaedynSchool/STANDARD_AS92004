@@ -3,14 +3,14 @@ Quiz about New Zealand
 Kaedyn Eastall
 Licensed with the JSS General Public License 001 - https://github.com/Jester-Software-Systems/JSS_LICENSE_DIRECTORY/blob/2025-Licenses/MARCH/JSS-GPL1
 '''
-import time
-import os
+import time # 'time' has been imported so I can make the user wait a certain amount of seconds
+import os # 'os' has been imported so I can clear the screen on game restart
 
 # Lists & Variables
-int_score = 0
-int_question = 0
-str_name = ""
-LIST_QUESTIONS = [
+int_score = 0 # Setting the 'int_score' variable to 0
+int_question = 0 # Setting the user on question 0
+str_name = "" # Setting the user name to blank before they input it.
+LIST_QUESTIONS = [ # A list with all the questions
     "What british sailor officially mapped New Zealand?",
     "What is the capital of New Zealand?",
     "Where is the big carrot?",
@@ -20,7 +20,7 @@ LIST_QUESTIONS = [
     "(True or False) The South Island the largest island in the world?",
     "What does the māori word \"Taraka\" mean?"
 ]
-LIST_ANSWERS = [
+LIST_ANSWERS = [ # Alist with all the answers
     "James Cook",
     "Wellington",
     "Ohakune",
@@ -30,7 +30,7 @@ LIST_ANSWERS = [
     "False",
     "Truck"
 ]
-LIST_CHAT = [
+LIST_CHAT = [ # A list with all the other things I have to say.
     "Welcome to Kaedyn's quiz! Whats your name?",
     "Ok! Please wait three seconds and then the quiz will restart.",
     "Alright, thanks for playing!"
@@ -38,7 +38,7 @@ LIST_CHAT = [
 
 # Intro & Question Print Loop
 print(LIST_CHAT[0])
-str_name = input()
+str_name = input() # User name input
 def playing():
     global int_score
     for i in range (len(LIST_QUESTIONS)):
@@ -68,7 +68,7 @@ def runit():
         int_question = 0
         int_score = 0
         time.sleep(3)
-        os.clear()
+        os.system('clear')
         playing()
     elif tryagain == "No":
         print(LIST_CHAT[2])
